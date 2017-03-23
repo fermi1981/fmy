@@ -1,0 +1,15 @@
+objects = main.o fmy.o
+FLAG = -I "/usr/local/include"
+LIBS = -L "/usr/local/lib"
+
+fmy:${objects}
+	gcc -o fmy ${objects} ${FLAG} ${LIBS}
+ 
+.PHONY : lib
+lib:
+	gcc -c fmy.c -static
+	gcc -shared -o fmy.lib fmy.o ${FLAG} ${LIBS}
+	
+.PHONY : clean
+clean:
+	-rm *.bak *.o fmy *.lib

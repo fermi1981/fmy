@@ -1,0 +1,15 @@
+objects = main.o fmy.o
+FLAG = -I "/C/MinGW/include" -I "/C/MinGW/msys/1.0/include"
+LIBS= -L "/C/MinGW/lib" -L "/C/MinGW/msys/1.0/lib"
+
+fmy.exe:${objects}
+	gcc -o fmy.exe ${objects} ${FLAG} ${LIBS}
+ 
+.PHONY : dll
+dll:
+	gcc -c fmy.c -static
+	gcc -shared -o fmy.dll fmy.o -Wl,--output-def fmy.def,--out-implib,fmy.a ${FLAG} ${LIBS}
+ 
+.PHONY : clean
+clean:
+	-rm *.bak *.o *.exe *.dll
