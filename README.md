@@ -9,3 +9,4 @@ make clean:clean object files.
 make dll:make a dll file for windows system (mingw).---for build testing
 make lib:make a lib file for MAC system.---for build testing
 
+20170324 modify "void FCRData(unsigned char *data,long length,unsigned char *codes)" in fmy.c
