@@ -133,8 +133,9 @@ void FCRData(unsigned char *data,long length,unsigned char *codes)
     {
         unsigned char *buffer=(unsigned char *)malloc(2048);
         for (int i=0; i<2048; i+=length) {
-            memcpy(buffer+i, data, length);
+            buffer[i]=i&0xFF;
         }
+        memcpy(buffer, data, length);
         VCDataUpdate(buffer, 1024, vCode);
         free(buffer);
     }
