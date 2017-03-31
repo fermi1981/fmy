@@ -62,15 +62,13 @@ static void VC2Str(unsigned char *str,VerifyCode vcode)
 
 static int bit_count(unsigned char chr)
 {
-    int count=0;
-    int tmp=((int)chr)&0x000000FF;
-    
-    while (tmp) {
-        int left=tmp-1;
-        tmp-=(left>>1);
-        count++;
-    }
-    return count;
+	int count=0;
+	int k=((int)chr)&0xFF;
+	while (k) {
+		k&=k-1;
+		count++;
+	}
+	return count;
 }
 
 //vcode
